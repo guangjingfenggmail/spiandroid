@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpiApplication</string>
+    <item name="doubleClick" type="id"/>
 </resources>

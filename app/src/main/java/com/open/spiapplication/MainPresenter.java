@@ -3,6 +3,7 @@ package com.open.spiapplication;
 import android.util.Log;
 import android.view.View;
 
+import com.open.aspectjx.DoubleClick;
 import com.open.borrowmodule.BorrowPlugin;
 import com.open.usermodule.UserPlugin;
 
@@ -25,6 +26,7 @@ public class MainPresenter {
         this.model = model;
     }
 
+    @DoubleClick(value = 1000)
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnUser:

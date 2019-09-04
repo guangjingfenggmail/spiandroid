@@ -1,1 +1,1 @@
-include ':app', ':interfaces', ':usermodule', ':borrowmodule'
+include ':app', ':interfaces', ':usermodule', ':borrowmodule', ':aspectjx'
