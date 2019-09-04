@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
+
+        <import type="com.open.spiapplication.MainModel" />
+        <variable
+            name="model"
+            type="MainModel" />
 
         <variable
             name="presenter"
@@ -17,17 +23,17 @@
 
         <Button
             android:id="@+id/btnUser"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{presenter.onClick}"
-            android:text="userplugin" />
+            android:onClick="@{(view)->presenter.onClick(view)}"
+            android:text="@{model.user}" />
 
         <Button
             android:id="@+id/btnBorrow"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{presenter.onClick}"
-            android:text="borrowplugin" />
-
+            android:onClick="@{(view)->presenter.onClick(view)}"
+            android:text="@{model.borrow}" />
+        <!--  android:onClick="@{presenter.onClick}"-->
     </LinearLayout>
 </layout>

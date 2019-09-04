@@ -1,22 +1,26 @@
 package com.open.spiapplication;
 
-import androidx.databinding.DataBindingUtil;
-
 import android.os.Bundle;
-import android.view.LayoutInflater;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.open.spiapplication.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mBinding;
+    private MainViewModel mainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mBinding.setPresenter(new MainPresenter());
+
+        MainModel model = new MainModel("userplugin", "borrowplugin");
+        mainViewModel = new MainViewModel(model);
+        mBinding.setModel(model);
+
+        mBinding.setPresenter(new MainPresenter(mainViewModel, model));
     }
 
 
