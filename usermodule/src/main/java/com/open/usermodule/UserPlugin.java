@@ -1,6 +1,11 @@
 package com.open.usermodule;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
+
+import com.open.usermodule.login.LoginActivity;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -14,13 +19,23 @@ import android.util.Log;
  **/
 public class UserPlugin implements IUserPlugin {
 
-    @Override
-    public void toLogin() {
-        Log.e("UserPlugin", "todo login");
-    }
 
     @Override
     public String pluginName() {
         return "UserPlugin";
+    }
+
+    @Override
+    public void toLogin(Context context, Bundle bundle) {
+        Log.e("UserPlugin", "todo login");
+        if (context == null)
+            return;
+
+        Intent intent = new Intent();
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        intent.setClass(context, LoginActivity.class);
+        context.startActivity(intent);
     }
 }

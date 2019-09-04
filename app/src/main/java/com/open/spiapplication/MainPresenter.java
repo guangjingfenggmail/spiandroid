@@ -33,7 +33,7 @@ public class MainPresenter {
                 UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
                 Log.e("MainActivity", "plugin===" + plugin.pluginName());
                 model.user.set(plugin.pluginName() + "onClick");
-                plugin.toLogin();
+                plugin.toLogin(v.getContext(),null);
                 break;
             case R.id.btnBorrow:
                 BorrowPlugin plugin2 = PluginFactory.getSingleton().getPlugin(BorrowPlugin.class);

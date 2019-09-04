@@ -1,23 +1,20 @@
-package com.open.usermodule;
+package com.open.usermodule.login;
 
-
-import android.content.Context;
-import android.os.Bundle;
-
-import com.open.interfaces.Plugin;
+import java.io.Serializable;
 
 /**
  * ****************************************************************************************************************************************************************************
  *
  * @author :guangjing.feng
- * @createTime: 2019-09-03.
+ * @createTime: 2019-09-04.
  * @version:1.1.0
  * @modifyTime:
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public interface IUserPlugin extends Plugin {
-
-    void toLogin(Context context, Bundle bundle);
-
+public class Account implements Serializable {
+    public int status;
+    public String msg;
+    public String url;
+    public String latest;
 }

@@ -1,23 +1,24 @@
-package com.open.usermodule;
+package com.open.usermodule.login;
 
-
-import android.content.Context;
-import android.os.Bundle;
-
-import com.open.interfaces.Plugin;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 /**
  * ****************************************************************************************************************************************************************************
  *
  * @author :guangjing.feng
- * @createTime: 2019-09-03.
+ * @createTime: 2019-09-04.
  * @version:1.1.0
  * @modifyTime:
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public interface IUserPlugin extends Plugin {
+public class LoginViewModel extends ViewModel {
+    public MutableLiveData<LoginModel> mloginLiveData = new MutableLiveData<>();
+    public LoginRepertory mLoginRepertory = new LoginRepertory();
 
-    void toLogin(Context context, Bundle bundle);
+    public LoginViewModel() {
+
+    }
 
 }

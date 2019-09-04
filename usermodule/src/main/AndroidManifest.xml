@@ -1,2 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.open.usermodule" />
+    package="com.open.usermodule">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <activity android:name=".login.LoginActivity" />
+    </application>
+</manifest>
