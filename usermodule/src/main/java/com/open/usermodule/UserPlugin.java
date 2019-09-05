@@ -3,7 +3,6 @@ package com.open.usermodule;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.open.usermodule.login.LoginActivity;
 
@@ -27,7 +26,6 @@ public class UserPlugin implements IUserPlugin {
 
     @Override
     public void toLogin(Context context, Bundle bundle) {
-        Log.e("UserPlugin", "todo login");
         if (context == null)
             return;
 

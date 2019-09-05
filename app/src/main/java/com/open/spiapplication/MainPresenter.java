@@ -3,6 +3,7 @@ package com.open.spiapplication;
 import android.util.Log;
 import android.view.View;
 
+import com.open.aspectjx.DebugLog;
 import com.open.aspectjx.DoubleClick;
 import com.open.borrowmodule.BorrowPlugin;
 import com.open.usermodule.UserPlugin;
@@ -26,6 +27,7 @@ public class MainPresenter {
         this.model = model;
     }
 
+    @DebugLog(level = Log.ERROR,tag = "MainPresenter",msg = "onClick")
     @DoubleClick(value = 1000)
     public void onClick(View v) {
         switch (v.getId()) {
@@ -33,7 +35,7 @@ public class MainPresenter {
                 UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
                 Log.e("MainActivity", "plugin===" + plugin.pluginName());
                 model.user.set(plugin.pluginName() + "onClick");
-                plugin.toLogin(v.getContext(),null);
+                plugin.toLogin(v.getContext(), null);
                 break;
             case R.id.btnBorrow:
                 BorrowPlugin plugin2 = PluginFactory.getSingleton().getPlugin(BorrowPlugin.class);

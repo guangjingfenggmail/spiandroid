@@ -1,1 +1,1 @@
-include ':app', ':interfaces', ':usermodule', ':borrowmodule', ':aspectjx', ':retrofit'
+include ':app', ':interfaces', ':usermodule', ':borrowmodule', ':aspectjx', ':retrofit', ':jetpack'
