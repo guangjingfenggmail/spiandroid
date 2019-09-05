@@ -32,7 +32,7 @@ public class PluginFactory {
 
     }
 
-    static PluginFactory getSingleton() {
+    public static PluginFactory getSingleton() {
         if (null == mPluginFactory) {
             synchronized (PluginFactory.class) {
                 if (null == mPluginFactory) {
@@ -43,7 +43,7 @@ public class PluginFactory {
         return mPluginFactory;
     }
 
-    <T> T getPlugin(Class<T> mclass) {
+    public  <T> T getPlugin(Class<T> mclass) {
         T plugin = null;
         for (Plugin p : mList) {
             if (p.getClass() == mclass) {
