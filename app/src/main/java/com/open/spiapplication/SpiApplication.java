@@ -13,15 +13,16 @@ import android.app.Application;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public class SpiApplication extends Application {
-    private static Application instance;
+    private static SpiApplication instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
         instance = this;
     }
 
-    public static Application getInstance() {
+    public static SpiApplication getInstance() {
         return instance;
     }
 }

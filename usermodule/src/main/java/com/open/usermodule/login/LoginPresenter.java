@@ -1,10 +1,13 @@
 package com.open.usermodule.login;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 
 import com.google.gson.Gson;
 import com.open.aspectjx.DoubleClick;
+import com.open.event.LoginEvent;
+import com.open.rxjava.RxBus;
 import com.open.usermodule.R;
 
 import io.reactivex.Observer;
@@ -24,9 +27,11 @@ import io.reactivex.schedulers.Schedulers;
  **/
 public class LoginPresenter {
     private LoginViewModel mViewModel;
+    private Activity mActivity;
 
-    public LoginPresenter(LoginViewModel mViewModel) {
+    public LoginPresenter(LoginViewModel mViewModel, Activity mActivity) {
         this.mViewModel = mViewModel;
+        this.mActivity = mActivity;
     }
 
     @DoubleClick(value = 1000)
@@ -48,7 +53,8 @@ public class LoginPresenter {
                                 Log.e("LoginPresenter", "===onNext===");
                                 Gson gson = new Gson();
                                 Log.e("LoginPresenter", "===onNext===" + gson.toJson(o));
-
+                                RxBus.getInstance().post(new LoginEvent(0));
+                                mActivity.finish();
                             }
 
                             @Override
@@ -66,7 +72,8 @@ public class LoginPresenter {
             }
 
         } else if (v.getId() == R.id.imgClose) {
-
+            RxBus.getInstance().post(new LoginEvent(-1));
+            mActivity.finish();
         }
     }
 

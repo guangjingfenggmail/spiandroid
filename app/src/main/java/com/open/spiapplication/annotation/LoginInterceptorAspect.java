@@ -2,7 +2,9 @@ package com.open.spiapplication.annotation;
 
 import android.util.Log;
 
+import com.open.PluginResult;
 import com.open.aspectjx.LoginInterceptor;
+import com.open.interfaces.PluginResultCallback;
 import com.open.spiapplication.PluginFactory;
 import com.open.spiapplication.SpiApplication;
 import com.open.usermodule.UserPlugin;
@@ -10,6 +12,7 @@ import com.open.usermodule.UserPlugin;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
@@ -23,6 +26,7 @@ import org.aspectj.lang.reflect.MethodSignature;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
+@Aspect
 public class LoginInterceptorAspect {
 
     @Pointcut("within(@com.open.aspectjx.LoginInterceptor *)")
@@ -54,7 +58,7 @@ public class LoginInterceptorAspect {
         }
     }
 
-    private void processJoinPoint(ProceedingJoinPoint joinPoint, LoginInterceptor interceptor) throws Throwable {
+    private void processJoinPoint(final ProceedingJoinPoint joinPoint, LoginInterceptor interceptor) throws Throwable {
 
         try {
             Signature signature = joinPoint.getSignature();
@@ -70,9 +74,19 @@ public class LoginInterceptorAspect {
             UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
             if (plugin == null)
                 return;
-            plugin.toLogin(SpiApplication.getInstance(), null);
+            plugin.toLogin(SpiApplication.getInstance(), null, new PluginResultCallback() {
+                @Override
+                public void onPluginResult(PluginResult result) {
+                    try {
+                        if (result != null && result.isSuccess()) {
+                            joinPoint.proceed();
+                        }
+                    } catch (Throwable throwable) {
+                        throwable.printStackTrace();
+                    }
+                }
+            });
 
-            //joinPoint.proceed();
         } catch (Exception e) {
             e.printStackTrace();
             joinPoint.proceed();

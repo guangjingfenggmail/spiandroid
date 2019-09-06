@@ -1,24 +1,17 @@
-package com.open.usermodule;
+package com.open.interfaces;
 
-
-import android.content.Context;
-import android.os.Bundle;
-
-import com.open.interfaces.Plugin;
-import com.open.interfaces.PluginResultCallback;
+import com.open.PluginResult;
 
 /**
  * ****************************************************************************************************************************************************************************
  *
  * @author :guangjing.feng
- * @createTime: 2019-09-03.
+ * @createTime: 2019-09-06.
  * @version:1.1.0
  * @modifyTime:
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public interface IUserPlugin extends Plugin {
-
-    void toLogin(Context context, Bundle bundle, PluginResultCallback callback);
-
+public interface PluginResultCallback {
+    void onPluginResult(PluginResult result);
 }

@@ -1,11 +1,15 @@
 package com.open.spiapplication;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
+import com.open.PluginResult;
 import com.open.aspectjx.DebugLog;
 import com.open.aspectjx.DoubleClick;
+import com.open.aspectjx.LoginInterceptor;
 import com.open.borrowmodule.BorrowPlugin;
+import com.open.interfaces.PluginResultCallback;
 import com.open.usermodule.UserPlugin;
 
 /**
@@ -27,23 +31,40 @@ public class MainPresenter {
         this.model = model;
     }
 
-    @DebugLog(level = Log.ERROR,tag = "MainPresenter",msg = "onClick")
-    @DoubleClick(value = 1000)
+
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnUser:
-                UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
-                Log.e("MainActivity", "plugin===" + plugin.pluginName());
-                model.user.set(plugin.pluginName() + "onClick");
-                plugin.toLogin(v.getContext(), null);
+                toLogin(v.getContext());
                 break;
             case R.id.btnBorrow:
-                BorrowPlugin plugin2 = PluginFactory.getSingleton().getPlugin(BorrowPlugin.class);
-                Log.e("MainActivity", "plugin2===" + plugin2.pluginName());
-                model.borrow.set(plugin2.pluginName() + "onClick");
-                plugin2.toBorrow();
+                toBorrow();
                 break;
         }
+    }
+
+    @DoubleClick(value = 1000)
+    @LoginInterceptor(isLogin = true)
+    @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toLogin")
+    private void toLogin(Context context) {
+        UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
+        Log.e("MainActivity", "plugin===" + plugin.pluginName());
+        model.user.set(plugin.pluginName() + "onClick");
+//        plugin.toLogin(context, null, new PluginResultCallback() {
+//            @Override
+//            public void onPluginResult(PluginResult result) {
+//
+//            }
+//        });
+    }
+
+    @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toBorrow")
+    @DoubleClick(value = 1000)
+    private void toBorrow() {
+        BorrowPlugin plugin2 = PluginFactory.getSingleton().getPlugin(BorrowPlugin.class);
+        Log.e("MainActivity", "plugin2===" + plugin2.pluginName());
+        model.borrow.set(plugin2.pluginName() + "onClick");
+        plugin2.toBorrow();
     }
 
 

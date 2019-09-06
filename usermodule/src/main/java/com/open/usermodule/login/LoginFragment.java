@@ -44,7 +44,7 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(LoginViewModel.class);
         LoginModel mModel = new LoginModel("1111", "11111");
-        mPresenter = new LoginPresenter(mViewModel);
+        mPresenter = new LoginPresenter(mViewModel,getActivity());
         mBinding.setPresenter(mPresenter);
         mBinding.setModel(mModel);
     }

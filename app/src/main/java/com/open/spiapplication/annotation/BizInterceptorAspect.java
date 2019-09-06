@@ -11,6 +11,7 @@ import com.open.usermodule.UserPlugin;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
@@ -24,6 +25,7 @@ import org.aspectj.lang.reflect.MethodSignature;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
+@Aspect
 public class BizInterceptorAspect {
 
     @Pointcut("within(@com.open.aspectjx.BizAInterceptor *)")
