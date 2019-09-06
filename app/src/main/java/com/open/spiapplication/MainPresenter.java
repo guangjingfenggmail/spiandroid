@@ -4,12 +4,15 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
-import com.open.PluginResult;
+import androidx.fragment.app.FragmentActivity;
+
+import com.open.aspectjx.BizAInterceptor;
 import com.open.aspectjx.DebugLog;
 import com.open.aspectjx.DoubleClick;
 import com.open.aspectjx.LoginInterceptor;
+import com.open.aspectjx.Permission;
 import com.open.borrowmodule.BorrowPlugin;
-import com.open.interfaces.PluginResultCallback;
+import com.open.jetpack.Presenter;
 import com.open.usermodule.UserPlugin;
 
 /**
@@ -22,15 +25,11 @@ import com.open.usermodule.UserPlugin;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class MainPresenter {
-    private MainModel model;
-    private MainViewModel viewModel;
+public class MainPresenter extends Presenter<MainModel, MainViewModel> {
 
-    public MainPresenter(MainViewModel viewModel, MainModel model) {
-        this.viewModel = viewModel;
-        this.model = model;
+    public MainPresenter(FragmentActivity context, MainModel model, MainViewModel viewModel) {
+        super(context, model, viewModel);
     }
-
 
     public void onClick(View v) {
         switch (v.getId()) {
@@ -45,6 +44,7 @@ public class MainPresenter {
 
     @DoubleClick(value = 1000)
     @LoginInterceptor(isLogin = true)
+    @BizAInterceptor(event = 0)
     @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toLogin")
     private void toLogin(Context context) {
         UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
@@ -58,8 +58,9 @@ public class MainPresenter {
 //        });
     }
 
-    @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toBorrow")
     @DoubleClick(value = 1000)
+    @Permission(request = {"android.permission.READ_PHONE_STATE"})
+    @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toBorrow")
     private void toBorrow() {
         BorrowPlugin plugin2 = PluginFactory.getSingleton().getPlugin(BorrowPlugin.class);
         Log.e("MainActivity", "plugin2===" + plugin2.pluginName());

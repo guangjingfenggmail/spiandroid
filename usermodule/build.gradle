@@ -39,5 +39,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     compile project(path: ':aspectjx')
     compile project(path: ':retrofit')
+    compile project(path: ':jetpack')
 
 }

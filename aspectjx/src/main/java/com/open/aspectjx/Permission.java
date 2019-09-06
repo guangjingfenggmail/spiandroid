@@ -9,15 +9,28 @@ import java.lang.annotation.Target;
  * ****************************************************************************************************************************************************************************
  *
  * @author :guangjing.feng
- * @createTime: 2019-09-05.
+ * @createTime: 2019-09-06.
  * @version:1.1.0
  * @modifyTime:
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR})
-public @interface BizAInterceptor {
+public @interface Permission {
 
-   int event();
+    /**
+     * 请求需要的权限
+     *
+     * @return
+     */
+    String[] request() default {};
+
+    /**
+     * 检查需要的权限
+     *
+     * @return
+     */
+    String[] check() default {};
+
 }

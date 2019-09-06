@@ -1,5 +1,8 @@
 package com.open.spiapplication;
 
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+
 /**
  * ****************************************************************************************************************************************************************************
  *
@@ -10,10 +13,8 @@ package com.open.spiapplication;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class MainViewModel {
-    private MainModel model;
+public class MainViewModel extends ViewModel {
+    public MutableLiveData<MainModel> mMainLiveData = new MutableLiveData<>();
 
-    public MainViewModel(MainModel model) {
-        this.model = model;
-    }
+
 }

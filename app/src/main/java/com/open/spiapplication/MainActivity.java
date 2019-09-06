@@ -14,30 +14,30 @@ public class MainActivity extends AppCompatActivity {
     private MainViewModel mainViewModel;
     private MainPresenter mPresenter;
 
-    @DebugLog(level = Log.DEBUG,tag = "MainActivity",msg = "onCreate")
+    @DebugLog(level = Log.DEBUG, tag = "MainActivity", msg = "onCreate")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         MainModel model = new MainModel("userplugin", "borrowplugin");
-        mainViewModel = new MainViewModel(model);
+        mainViewModel = new MainViewModel();
         mBinding.setModel(model);
 
-        mPresenter = new MainPresenter(mainViewModel, model);
+        mPresenter = new MainPresenter(this, model, mainViewModel);
         mBinding.setPresenter(mPresenter);
 
     }
 
-    @DebugLog(level = Log.DEBUG,tag = "MainActivity",msg = "onResume")
+    @DebugLog(level = Log.DEBUG, tag = "MainActivity", msg = "onResume")
     @Override
     protected void onResume() {
         super.onResume();
     }
 
-    @DebugLog(level = Log.DEBUG,tag = "MainActivity",msg = "onDestroy")
+    @DebugLog(level = Log.DEBUG, tag = "MainActivity", msg = "onDestroy")
     @Override
     protected void onDestroy() {
         super.onDestroy();
-     }
+    }
 }

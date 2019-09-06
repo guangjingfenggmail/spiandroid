@@ -70,6 +70,7 @@ public class BizInterceptorAspect {
             if (interceptor == null)
                 return;
             //todo bizA
+            Log.e("BizInterceptorAspect","todo bizA");
 
             joinPoint.proceed();
         } catch (Exception e) {
