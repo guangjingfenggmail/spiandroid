@@ -36,6 +36,8 @@ dependencies {
     implementation project(':interfaces')
     implementation project(':usermodule')
     implementation project(':borrowmodule')
+    implementation project(':verifymodule')
+
     implementation project(':aspectjx')
     implementation project(':jetpack')
 

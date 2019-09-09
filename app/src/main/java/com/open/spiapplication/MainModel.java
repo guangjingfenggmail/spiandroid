@@ -16,10 +16,13 @@ public class MainModel {
 
     public ObservableField<String> user = new ObservableField<>();
     public ObservableField<String> borrow = new ObservableField<>();
+    public ObservableField<String> verify = new ObservableField<>();
 
-    public MainModel(String user, String borrow) {
+
+    public MainModel(String user, String borrow, String verify) {
         this.user.set(user);
         this.borrow.set(borrow);
+        this.verify.set(verify);
     }
 
 

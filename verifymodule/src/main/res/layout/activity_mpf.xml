@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
 
-        <import type="com.open.spiapplication.MainModel" />
+        <import type="com.open.verifymodule.mpf.MpfModel" />
+
         <variable
             name="model"
-            type="MainModel" />
+            type="MpfModel" />
 
         <variable
             name="presenter"
-            type="com.open.spiapplication.MainPresenter" />
+            type="com.open.verifymodule.mpf.MpfPresenter" />
     </data>
 
     <LinearLayout
@@ -22,25 +24,12 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnUser"
+            android:id="@+id/btnActivate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{(view)->presenter.onClick(view)}"
-            android:text="@{model.user}" />
+            android:text="激活" />
 
-        <Button
-            android:id="@+id/btnBorrow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{(view)->presenter.onClick(view)}"
-            android:text="@{model.borrow}" />
-
-        <Button
-            android:id="@+id/btnVerify"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{(view)->presenter.onClick(view)}"
-            android:text="@{model.verify}" />
         <!--  android:onClick="@{presenter.onClick}"-->
     </LinearLayout>
 </layout>

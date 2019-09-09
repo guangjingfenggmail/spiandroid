@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        MainModel model = new MainModel("userplugin", "borrowplugin");
+        MainModel model = new MainModel("userplugin", "borrowplugin", "verifymodule");
         mainViewModel = new MainViewModel();
         mBinding.setModel(model);
 
