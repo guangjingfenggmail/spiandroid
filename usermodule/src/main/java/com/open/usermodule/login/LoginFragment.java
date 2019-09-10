@@ -34,8 +34,8 @@ public class LoginFragment extends AbsFragment<FragmentLoginBinding, LoginModel,
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        initProvider(LoginViewModel.class);
         super.onViewCreated(view, savedInstanceState);
+        initProvider(LoginViewModel.class);
     }
 
 

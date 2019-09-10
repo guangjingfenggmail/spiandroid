@@ -6,10 +6,11 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
+
+import com.open.jetpack.proxy.Proxy;
+import com.open.jetpack.proxy.ProxyActivity;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -26,6 +27,7 @@ public abstract class AbsAppCompatActivity<T extends ViewDataBinding, PT extends
     protected PT mModel;
     protected VM mViewModel;
     protected P mPresenter;
+    protected ProxyActivity mProxy;
 
     /***
      * 设置布局
@@ -38,9 +40,8 @@ public abstract class AbsAppCompatActivity<T extends ViewDataBinding, PT extends
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, setLayout());
-
-        setBinding();
+        mProxy = new ProxyActivity<P>(this, setLayout());
+        mBinding = (T) mProxy.onCreate();
     }
 
     /**
@@ -49,7 +50,8 @@ public abstract class AbsAppCompatActivity<T extends ViewDataBinding, PT extends
      * @param modelClas
      */
     protected void initProvider(@NonNull Class<VM> modelClas) {
-        mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(modelClas);
+        mViewModel = (VM) mProxy.initProvider(modelClas);
+        setBinding();
     }
 
     /**
@@ -61,9 +63,7 @@ public abstract class AbsAppCompatActivity<T extends ViewDataBinding, PT extends
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mPresenter != null) {
-            mPresenter = null;
-        }
+        mProxy.onDestroy();
     }
 
 

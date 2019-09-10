@@ -16,8 +16,8 @@ public class MainActivity extends AbsAppCompatActivity<ActivityMainBinding, Main
     @DebugLog(level = Log.DEBUG, tag = "MainActivity", msg = "onCreate")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        initProvider(MainViewModel.class);
         super.onCreate(savedInstanceState);
+        initProvider(MainViewModel.class);
     }
 
 

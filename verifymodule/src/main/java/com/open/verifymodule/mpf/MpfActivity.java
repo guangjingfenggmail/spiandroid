@@ -28,8 +28,8 @@ public class MpfActivity extends AbsAppCompatActivity<ActivityMpfBinding, MpfMod
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        initProvider(MpfViewModel.class);
         super.onCreate(savedInstanceState);
+        initProvider(MpfViewModel.class);
     }
 
 
