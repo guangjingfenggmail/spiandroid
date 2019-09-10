@@ -16,4 +16,6 @@ import androidx.lifecycle.ViewModel;
 public class MpfViewModel extends ViewModel {
     public MutableLiveData<MpfModel> mMpfLiveData = new MutableLiveData<>();
 
+    public MpfViewModel() {
+    }
 }

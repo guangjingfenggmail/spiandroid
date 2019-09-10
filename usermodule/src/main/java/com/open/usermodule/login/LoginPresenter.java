@@ -29,10 +29,10 @@ import io.reactivex.schedulers.Schedulers;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class LoginPresenter extends Presenter<Object,LoginViewModel> {
+public class LoginPresenter extends Presenter<LoginModel,LoginViewModel> {
 
-    public LoginPresenter(FragmentActivity context, LoginViewModel viewModel) {
-        super(context, viewModel);
+    public LoginPresenter(FragmentActivity context, LoginModel model, LoginViewModel viewModel) {
+        super(context, model, viewModel);
     }
 
     @DoubleClick(value = 1000)

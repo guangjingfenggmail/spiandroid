@@ -1,9 +1,9 @@
 package com.open.jetpack;
 
- import android.content.Context;
+import android.content.Context;
 
- import androidx.fragment.app.FragmentActivity;
- import androidx.lifecycle.ViewModel;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModel;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -16,16 +16,9 @@ package com.open.jetpack;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public class Presenter<T, V extends ViewModel> {
-
     protected FragmentActivity context;
     protected T model;
     protected V viewModel;
-
-
-    public Presenter(FragmentActivity context, V viewModel) {
-        this.context = context;
-        this.viewModel = viewModel;
-    }
 
     public Presenter(FragmentActivity context, T model, V viewModel) {
         this.context = context;

@@ -3,10 +3,8 @@ package com.open.verifymodule.mpf;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.open.jetpack.AbsAppCompatActivity;
 import com.open.verifymodule.R;
 import com.open.verifymodule.databinding.ActivityMpfBinding;
 
@@ -20,21 +18,25 @@ import com.open.verifymodule.databinding.ActivityMpfBinding;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class MpfActivity extends AppCompatActivity {
-    private ActivityMpfBinding mBinding;
-    private MpfViewModel mViewModel;
-    private MpfPresenter mPresenter;
+public class MpfActivity extends AbsAppCompatActivity<ActivityMpfBinding, MpfModel, MpfViewModel, MpfPresenter> {
+
+    @Override
+    protected int setLayout() {
+        return R.layout.activity_mpf;
+    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        initProvider(MpfViewModel.class);
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_mpf);
+    }
 
 
+    @Override
+    protected void setBinding() {
         MpfModel model = new MpfModel();
         mBinding.setModel(model);
-
-        mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(MpfViewModel.class);
 
         mPresenter = new MpfPresenter(this, model, mViewModel);
         mBinding.setPresenter(mPresenter);

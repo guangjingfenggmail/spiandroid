@@ -1,14 +1,11 @@
 package com.open.verifymodule;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.open.interfaces.PluginResultCallback;
-import com.open.verifymodule.verify.mpf.AgreementHandler;
-import com.open.verifymodule.verify.mpf.FacialHandler;
-import com.open.verifymodule.verify.mpf.RejectHandler;
-import com.open.verifymodule.verify.mpf.TriggerHandler;
-import com.open.verifymodule.verify.mpf.VerifyInfoHandler;
+import com.open.verifymodule.mpf.MpfActivity;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -23,16 +20,17 @@ import com.open.verifymodule.verify.mpf.VerifyInfoHandler;
 public class VerifyPlugin implements IVerifyPlugin {
     @Override
     public void toVerify(Context context, Bundle bundle, PluginResultCallback callback) {
-        VerifyInfoHandler verifyInfoHandler = new VerifyInfoHandler(context, bundle);
-        FacialHandler facialHandler = new FacialHandler(context, bundle);
-        TriggerHandler triggerHandler = new TriggerHandler(context, bundle);
-        RejectHandler rejectHandler = new RejectHandler(context, bundle);
-        AgreementHandler agreementHandler = new AgreementHandler(context, bundle);
 
-        verifyInfoHandler.setNext(facialHandler);
-        facialHandler.setNext(triggerHandler);
-        triggerHandler.setNext(rejectHandler);
-        rejectHandler.setNext(agreementHandler);
+        if (context == null)
+            return;
+
+        Intent intent = new Intent();
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setClass(context, MpfActivity.class);
+        context.startActivity(intent);
     }
 
     @Override

@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.open.jetpack.AbsFragment;
 import com.open.usermodule.R;
 import com.open.usermodule.databinding.FragmentLoginBinding;
 
@@ -24,27 +25,25 @@ import com.open.usermodule.databinding.FragmentLoginBinding;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class LoginFragment extends Fragment {
-    private FragmentLoginBinding mBinding;
-    private LoginViewModel mViewModel;
-    private LoginPresenter mPresenter;
+public class LoginFragment extends AbsFragment<FragmentLoginBinding, LoginModel, LoginViewModel, LoginPresenter> {
 
-    @Nullable
     @Override
-
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        mBinding = FragmentLoginBinding.inflate(inflater);
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
-
-        return mBinding.getRoot();
+    protected int setLayout() {
+        return R.layout.fragment_login;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        initProvider(LoginViewModel.class);
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(LoginViewModel.class);
-        LoginModel mModel = new LoginModel("1111", "11111");
-        mPresenter = new LoginPresenter(getActivity(),mViewModel);
+    }
+
+
+    @Override
+    protected void setBinding() {
+        mPresenter = new LoginPresenter(getActivity(), null, mViewModel);
+        mModel = new LoginModel("1111", "11111");
+
         mBinding.setPresenter(mPresenter);
         mBinding.setModel(mModel);
     }
