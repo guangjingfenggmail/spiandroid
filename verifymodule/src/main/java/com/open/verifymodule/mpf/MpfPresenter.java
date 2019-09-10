@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.open.aspectjx.DoubleClick;
 import com.open.interfaces.PluginFactory;
-import com.open.interfaces.plugins.IAppPlugin;
 import com.open.interfaces.plugins.IUserPlugin;
 import com.open.jetpack.Presenter;
 import com.open.verifymodule.R;

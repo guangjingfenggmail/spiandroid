@@ -25,11 +25,29 @@ public final class PluginFactory {
             return plugin;
         }
 
+        /**
+         * @AutoService(IAppPlugin.class)
+         * public class AppPlugin implements IAppPlugin {}
+         *
+         * 主app模块
+         *
+         *  UserPlugin plugin = PluginFactory.getPlugin(UserPlugin.class);
+         *
+         *  Log.e("MainActivity", "plugin===" + plugin.pluginName());
+         */
         Class<? super T> rawType = (Class<? super T>) mclass.getGenericInterfaces()[0];
         if (rawType == null)
             return plugin;
 
-        if (rawType == Plugin.class){
+
+        /***
+         *  子module相互调用
+         *
+         *  IUserPlugin plugin = PluginFactory.getPlugin(IUserPlugin.class);
+         *
+         *  Log.e("MpfPresenter", "IUserPlugin==" + plugin.pluginName());
+         */
+        if (rawType == Plugin.class) {
             rawType = mclass;
         }
 
