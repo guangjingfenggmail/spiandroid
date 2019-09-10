@@ -1,6 +1,4 @@
-package com.open.spiapplication;
-
-import com.open.interfaces.Plugin;
+package com.open.interfaces;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.open.PluginResult;
 import com.open.aspectjx.LoginInterceptor;
+import com.open.interfaces.PluginFactory;
 import com.open.interfaces.PluginResultCallback;
-import com.open.spiapplication.PluginFactory;
 import com.open.spiapplication.SpiApplication;
 import com.open.usermodule.UserPlugin;
 

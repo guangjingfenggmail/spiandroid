@@ -3,10 +3,6 @@ package com.open.spiapplication.annotation;
 import android.util.Log;
 
 import com.open.aspectjx.BizAInterceptor;
-import com.open.aspectjx.LoginInterceptor;
-import com.open.spiapplication.PluginFactory;
-import com.open.spiapplication.SpiApplication;
-import com.open.usermodule.UserPlugin;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;

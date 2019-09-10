@@ -14,6 +14,7 @@ import com.open.aspectjx.DoubleClick;
 import com.open.aspectjx.LoginInterceptor;
 import com.open.aspectjx.Permission;
 import com.open.borrowmodule.BorrowPlugin;
+import com.open.interfaces.PluginFactory;
 import com.open.interfaces.PluginResultCallback;
 import com.open.jetpack.Presenter;
 import com.open.usermodule.UserPlugin;
