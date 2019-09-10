@@ -2,6 +2,9 @@ package com.open.borrowmodule;
 
 import android.util.Log;
 
+import com.google.auto.service.AutoService;
+import com.open.interfaces.plugins.IBorrowPlugin;
+
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -13,7 +16,8 @@ import android.util.Log;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class BorrowPlugin implements IBorrowPlugin {
+@AutoService(IBorrowPlugin.class)
+public class BorrowPlugin   implements IBorrowPlugin {
 
     @Override
     public String pluginName() {

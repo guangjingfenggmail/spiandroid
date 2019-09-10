@@ -71,7 +71,7 @@ public class LoginInterceptorAspect {
             if (interceptor == null)
                 return;
             //todo
-            UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
+            UserPlugin plugin = PluginFactory.getPlugin(UserPlugin.class);
             if (plugin == null)
                 return;
             plugin.toLogin(SpiApplication.getInstance(), null, new PluginResultCallback() {

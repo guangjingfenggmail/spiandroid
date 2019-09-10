@@ -1,4 +1,4 @@
-package com.open.spiapplication.plugin;
+package com.open.interfaces.plugins;
 
 import com.open.interfaces.Plugin;
 
@@ -6,11 +6,13 @@ import com.open.interfaces.Plugin;
  * ****************************************************************************************************************************************************************************
  *
  * @author :guangjing.feng
- * @createTime: 2019-09-10.
+ * @createTime: 2019-09-03.
  * @version:1.1.0
  * @modifyTime:
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public interface IAppPlugin extends Plugin {
+public interface IBorrowPlugin extends Plugin {
+
+    void toBorrow();
 }

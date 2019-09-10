@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.auto.service.AutoService;
 import com.open.PluginResult;
 import com.open.event.LoginEvent;
 import com.open.interfaces.PluginResultCallback;
+import com.open.interfaces.plugins.IUserPlugin;
 import com.open.rxjava.RxBus;
 import com.open.usermodule.login.LoginActivity;
 
@@ -23,8 +25,8 @@ import io.reactivex.functions.Function;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class UserPlugin implements IUserPlugin {
-
+@AutoService(IUserPlugin.class)
+public class UserPlugin   implements IUserPlugin {
 
     @Override
     public String pluginName() {

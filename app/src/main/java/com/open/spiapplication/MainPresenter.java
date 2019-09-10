@@ -55,22 +55,22 @@ public class MainPresenter extends Presenter<MainModel, MainViewModel> {
     @BizAInterceptor(event = 0)
     @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toLogin")
     private void toLogin(Context context) {
-        UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
+        UserPlugin plugin = PluginFactory.getPlugin(UserPlugin.class);
         Log.e("MainActivity", "plugin===" + plugin.pluginName());
         model.user.set(plugin.pluginName() + "onClick");
-//        plugin.toLogin(context, null, new PluginResultCallback() {
-//            @Override
-//            public void onPluginResult(PluginResult result) {
-//
-//            }
-//        });
+        plugin.toLogin(context, null, new PluginResultCallback() {
+            @Override
+            public void onPluginResult(PluginResult result) {
+
+            }
+        });
     }
 
     @DoubleClick(value = 1000)
     @Permission(request = {"android.permission.READ_PHONE_STATE"})
     @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toBorrow")
     private void toBorrow() {
-        BorrowPlugin plugin2 = PluginFactory.getSingleton().getPlugin(BorrowPlugin.class);
+        BorrowPlugin plugin2 = PluginFactory.getPlugin(BorrowPlugin.class);
         Log.e("MainActivity", "plugin2===" + plugin2.pluginName());
         model.borrow.set(plugin2.pluginName() + "onClick");
         plugin2.toBorrow();
@@ -79,7 +79,7 @@ public class MainPresenter extends Presenter<MainModel, MainViewModel> {
     @DoubleClick(value = 1000)
     @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toVerify")
     private void toVerify(Context context) {
-        VerifyPlugin plugin = PluginFactory.getSingleton().getPlugin(VerifyPlugin.class);
+        VerifyPlugin plugin = PluginFactory.getPlugin(VerifyPlugin.class);
         Log.e("MainActivity", "plugin===" + plugin.pluginName());
         model.verify.set(plugin.pluginName() + "onClick");
         plugin.toVerify(context, new Bundle(), new PluginResultCallback() {

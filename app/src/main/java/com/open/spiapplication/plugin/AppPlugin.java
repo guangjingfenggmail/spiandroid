@@ -1,5 +1,8 @@
 package com.open.spiapplication.plugin;
 
+import com.google.auto.service.AutoService;
+import com.open.interfaces.plugins.IAppPlugin;
+
 /**
  * ****************************************************************************************************************************************************************************
  *
@@ -10,7 +13,8 @@ package com.open.spiapplication.plugin;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class AppPlugin implements IAppPlugin {
+@AutoService(IAppPlugin.class)
+public class AppPlugin   implements IAppPlugin {
     @Override
     public String pluginName() {
         return "AppPlugin";

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.auto.service.AutoService;
 import com.open.interfaces.PluginResultCallback;
+import com.open.interfaces.plugins.IVerifyPlugin;
 import com.open.verifymodule.mpf.MpfActivity;
 
 /**
@@ -17,7 +19,8 @@ import com.open.verifymodule.mpf.MpfActivity;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class VerifyPlugin implements IVerifyPlugin {
+@AutoService(IVerifyPlugin.class)
+public class VerifyPlugin  implements IVerifyPlugin {
     @Override
     public void toVerify(Context context, Bundle bundle, PluginResultCallback callback) {
 
