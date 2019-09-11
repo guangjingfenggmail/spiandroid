@@ -1,4 +1,4 @@
-package com.open.verifymodule;
+package com.open.interfaces.plugins;
 
 import android.content.Context;
 import android.os.Bundle;

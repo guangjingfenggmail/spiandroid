@@ -2,6 +2,8 @@ package com.open.borrowmodule;
 
 import android.util.Log;
 
+import com.open.interfaces.plugins.IBorrowPlugin;
+
 
 /**
  * ****************************************************************************************************************************************************************************

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.open.interfaces.PluginResultCallback;
+import com.open.interfaces.plugins.IVerifyPlugin;
 import com.open.verifymodule.mpf.MpfActivity;
 
 /**

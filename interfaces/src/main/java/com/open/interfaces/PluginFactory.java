@@ -41,13 +41,19 @@ public class PluginFactory {
         return mPluginFactory;
     }
 
-    public  <T> T getPlugin(Class<T> mclass) {
+    public <T> T getPlugin(Class<T> mclass) {
         T plugin = null;
         for (Plugin p : mList) {
             if (p.getClass() == mclass) {
                 plugin = (T) p;
                 break;
             }
+
+            if (p.getClass().getGenericInterfaces() != null && p.getClass().getGenericInterfaces()[0] == mclass) {
+                plugin = (T) p;
+                break;
+            }
+
         }
 
         return plugin;

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.open.PluginResult;
 import com.open.event.LoginEvent;
 import com.open.interfaces.PluginResultCallback;
+import com.open.interfaces.plugins.IUserPlugin;
 import com.open.rxjava.RxBus;
 import com.open.usermodule.login.LoginActivity;
 

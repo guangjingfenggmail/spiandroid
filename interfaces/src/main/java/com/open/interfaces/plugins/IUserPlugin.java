@@ -1,6 +1,11 @@
-package com.open.borrowmodule;
+package com.open.interfaces.plugins;
+
+
+import android.content.Context;
+import android.os.Bundle;
 
 import com.open.interfaces.Plugin;
+import com.open.interfaces.PluginResultCallback;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -12,7 +17,8 @@ import com.open.interfaces.Plugin;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public interface IBorrowPlugin extends Plugin {
+public interface IUserPlugin extends Plugin {
 
-    void toBorrow();
+    void toLogin(Context context, Bundle bundle, PluginResultCallback callback);
+
 }

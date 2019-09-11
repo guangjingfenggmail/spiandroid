@@ -16,7 +16,9 @@ import com.open.aspectjx.Permission;
 import com.open.borrowmodule.BorrowPlugin;
 import com.open.interfaces.PluginFactory;
 import com.open.interfaces.PluginResultCallback;
+import com.open.interfaces.plugins.IAppPlugin;
 import com.open.jetpack.Presenter;
+import com.open.spiapplication.plugin.AppPlugin;
 import com.open.usermodule.UserPlugin;
 import com.open.verifymodule.VerifyPlugin;
 
@@ -55,6 +57,9 @@ public class MainPresenter extends Presenter<MainModel, MainViewModel> {
     @BizAInterceptor(event = 0)
     @DebugLog(level = Log.ERROR, tag = "MainPresenter", msg = "toLogin")
     private void toLogin(Context context) {
+        IAppPlugin plugin1 = PluginFactory.getSingleton().getPlugin(IAppPlugin.class);
+        Log.e("MpfPresenter", plugin1.pluginName());
+
         UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
         Log.e("MainActivity", "plugin===" + plugin.pluginName());
         model.user.set(plugin.pluginName() + "onClick");
