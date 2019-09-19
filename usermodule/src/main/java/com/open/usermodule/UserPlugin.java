@@ -11,6 +11,7 @@ import com.open.interfaces.plugins.IUserPlugin;
 import com.open.rxjava.RxBus;
 import com.open.usermodule.login.LoginActivity;
 
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
@@ -25,7 +26,7 @@ import io.reactivex.functions.Function;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public class UserPlugin implements IUserPlugin {
-
+    Disposable disposable = null;
 
     @Override
     public String pluginName() {
@@ -45,7 +46,7 @@ public class UserPlugin implements IUserPlugin {
         intent.setClass(context, LoginActivity.class);
         context.startActivity(intent);
 
-        RxBus.getInstance().toObservable().map(new Function<Object, LoginEvent>() {
+        disposable = RxBus.getInstance().toObservable().map(new Function<Object, LoginEvent>() {
             @Override
             public LoginEvent apply(Object o) throws Exception {
                 return (LoginEvent) o;
@@ -60,6 +61,7 @@ public class UserPlugin implements IUserPlugin {
                         callback.onPluginResult(PluginResult.newBuilder().error("", -2).build());
                     }
                 }
+                disposable.dispose();
             }
         });
     }

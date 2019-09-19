@@ -58,7 +58,7 @@ public class BizInterceptorAspect {
         try {
             Signature signature = joinPoint.getSignature();
             if (!(signature instanceof MethodSignature)) {
-                Log.d("LoginInterceptorAspect", "method is no MethodSignature, so proceed it");
+                Log.d("BizInterceptorAspect", "method is no MethodSignature, so proceed it");
                 joinPoint.proceed();
                 return;
             }

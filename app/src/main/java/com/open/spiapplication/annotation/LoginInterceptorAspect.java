@@ -63,7 +63,7 @@ public class LoginInterceptorAspect {
         try {
             Signature signature = joinPoint.getSignature();
             if (!(signature instanceof MethodSignature)) {
-                Log.d("LoginInterceptorAspect", "method is no MethodSignature, so proceed it");
+                Log.e("LoginInterceptorAspect", "method is no MethodSignature, so proceed it");
                 joinPoint.proceed();
                 return;
             }
@@ -78,6 +78,7 @@ public class LoginInterceptorAspect {
                 @Override
                 public void onPluginResult(PluginResult result) {
                     try {
+                        Log.e("LoginInterceptorAspect", "onPluginResult");
                         if (result != null && result.isSuccess()) {
                             joinPoint.proceed();
                         }

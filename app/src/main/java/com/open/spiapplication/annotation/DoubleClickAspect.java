@@ -44,11 +44,11 @@ public class DoubleClickAspect {
     }
 
     private void processJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
-        Log.d(TAG, "-----method is click--- ");
+        Log.e(TAG, "-----method is click--- ");
         try {
             Signature signature = joinPoint.getSignature();
             if (!(signature instanceof MethodSignature)) {
-                Log.d(TAG, "method is no MethodSignature, so proceed it");
+                Log.e(TAG, "method is no MethodSignature, so proceed it");
                 joinPoint.proceed();
                 return;
             }
@@ -67,19 +67,19 @@ public class DoubleClickAspect {
                 int limitTime = clickLimit.value();
                 // not limit click
                 if (limitTime <= 0) {
-                    Log.d(TAG, "method: " + methodName + " limitTime is zero, so proceed it");
+                    Log.e(TAG, "method: " + methodName + " limitTime is zero, so proceed it");
                     joinPoint.proceed();
                     return;
                 }
                 intervalTime = limitTime;
-                Log.d(TAG, "methodName " + methodName + " intervalTime is " + intervalTime);
+                Log.e(TAG, "methodName " + methodName + " intervalTime is " + intervalTime);
             }
 
             // 传进来的参数不是 View, 则直接执行
             Object[] args = joinPoint.getArgs();
             View view = (View) args[0];
             if (view == null) {
-                Log.d(TAG, "view is null, proceed");
+                Log.e(TAG, "view is null, proceed");
                 joinPoint.proceed();
                 return;
             }
@@ -88,29 +88,29 @@ public class DoubleClickAspect {
             Object viewTimeTag = view.getTag(R.id.doubleClick);
             // first click viewTimeTag is null.
             if (viewTimeTag == null) {
-                Log.d(TAG, "lastClickTime is zero , proceed");
+                Log.e(TAG, "lastClickTime is zero , proceed");
                 proceedAnSetTimeTag(joinPoint, view);
                 return;
             }
 
             long lastClickTime = (long) viewTimeTag;
             if (lastClickTime <= 0) {
-                Log.d(TAG, "lastClickTime is zero , proceed");
+                Log.e(TAG, "lastClickTime is zero , proceed");
                 proceedAnSetTimeTag(joinPoint, view);
                 return;
             }
 
             // in limit time
             if (!canClick(lastClickTime, intervalTime)) {
-                Log.d(TAG, "is in limit time , return");
+                Log.e(TAG, "is in limit time , return");
                 return;
 
             }
             proceedAnSetTimeTag(joinPoint, view);
-            Log.d(TAG, "view proceed.");
+            Log.e(TAG, "view proceed.");
         } catch (Throwable e) {
             e.printStackTrace();
-            Log.d(TAG, e.getMessage());
+            Log.e(TAG, e.getMessage());
             joinPoint.proceed();
         }
     }

@@ -58,7 +58,7 @@ public class DebugLogAspect {
         try {
             Signature signature = joinPoint.getSignature();
             if (!(signature instanceof MethodSignature)) {
-                Log.d("DebugLogAspect", "method is no MethodSignature, so proceed it");
+                Log.e("DebugLogAspect", "method is no MethodSignature, so proceed it");
                 joinPoint.proceed();
                 return;
             }
@@ -72,7 +72,7 @@ public class DebugLogAspect {
                     Log.v(tag, msg);
                     break;
                 case Log.DEBUG:
-                    Log.d(tag, msg);
+                    Log.e(tag, msg);
                     break;
                 case Log.INFO:
                     Log.i(tag, msg);
