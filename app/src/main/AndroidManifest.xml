@@ -21,6 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="com.open.jetpack.provider.ApplicationContextProvider"
+            android:authorities="${applicationId}.contextprovider"
+            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -6,7 +6,8 @@ import com.open.PluginResult;
 import com.open.aspectjx.LoginInterceptor;
 import com.open.interfaces.PluginFactory;
 import com.open.interfaces.PluginResultCallback;
-import com.open.spiapplication.SpiApplication;
+import com.open.jetpack.ContextProvider;
+import com.open.jetpack.provider.ApplicationContextProvider;
 import com.open.usermodule.UserPlugin;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -74,7 +75,7 @@ public class LoginInterceptorAspect {
             UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
             if (plugin == null)
                 return;
-            plugin.toLogin(SpiApplication.getInstance(), null, new PluginResultCallback() {
+            plugin.toLogin(ContextProvider.get().getContext(), null, new PluginResultCallback() {
                 @Override
                 public void onPluginResult(PluginResult result) {
                     try {
