@@ -41,5 +41,6 @@ dependencies {
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
+    compile project(path: ':interfaces')
 
 }

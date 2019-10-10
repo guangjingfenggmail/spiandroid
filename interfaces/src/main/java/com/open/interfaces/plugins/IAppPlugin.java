@@ -13,4 +13,6 @@ import com.open.interfaces.Plugin;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public interface IAppPlugin extends Plugin {
+
+    void startApp();
 }

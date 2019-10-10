@@ -1,6 +1,11 @@
 package com.open.spiapplication.plugin;
 
+import android.content.ContentProvider;
+import android.content.Intent;
+
 import com.open.interfaces.plugins.IAppPlugin;
+import com.open.jetpack.ContextProvider;
+import com.open.spiapplication.MainActivity;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -16,5 +21,13 @@ public class AppPlugin implements IAppPlugin {
     @Override
     public String pluginName() {
         return "AppPlugin";
+    }
+
+    @Override
+    public void startApp() {
+        Intent i = new Intent(Intent.ACTION_MAIN);
+        i.setClass(ContextProvider.get().getContext(), MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        ContextProvider.get().getContext().startActivity(i);
     }
 }
