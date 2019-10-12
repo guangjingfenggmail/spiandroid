@@ -1,5 +1,6 @@
 package com.open.spiapplication.annotation;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.open.PluginResult;
@@ -71,11 +72,17 @@ public class LoginInterceptorAspect {
 
             if (interceptor == null)
                 return;
+
+            Object[] args = joinPoint.getArgs();
+            if (args == null || args.length == 0 )
+                return;
+
+            final Context target = (Context) args[0];
             //todo
             UserPlugin plugin = PluginFactory.getSingleton().getPlugin(UserPlugin.class);
             if (plugin == null)
                 return;
-            plugin.toLogin(ContextProvider.get().getContext(), null, new PluginResultCallback() {
+            plugin.toLogin(target, null, new PluginResultCallback() {
                 @Override
                 public void onPluginResult(PluginResult result) {
                     try {

@@ -11,8 +11,10 @@ import com.google.gson.Gson;
 import com.open.aspectjx.DoubleClick;
 import com.open.event.LoginEvent;
 import com.open.jetpack.Presenter;
+import com.open.jetpack.livedata.LiveDataBus;
 import com.open.rxjava.RxBus;
 import com.open.usermodule.R;
+import com.open.usermodule.event.LiveLoginEvent;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -66,14 +68,16 @@ public class LoginPresenter extends Presenter<LoginModel,LoginViewModel> {
                             @Override
                             public void onComplete() {
                                 Log.e("LoginPresenter", "===onComplete===");
-                                RxBus.getInstance().post(new LoginEvent(0));
+//                                RxBus.getInstance().post(new LoginEvent(0));
+                                LiveDataBus.get().of(LiveLoginEvent.class).login().postValue(0);
                                 ((Activity)context).finish();
                             }
                         });
             }
 
         } else if (v.getId() == R.id.imgClose) {
-            RxBus.getInstance().post(new LoginEvent(-1));
+//            RxBus.getInstance().post(new LoginEvent(-1));
+            LiveDataBus.get().of(LiveLoginEvent.class).login().postValue(-1);
             ((Activity)context).finish();
         }
     }
