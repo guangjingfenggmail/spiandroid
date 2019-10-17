@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class LoginModel implements Serializable {
     public String mobile;
     public String password;
+    public boolean isEnable = false;
 
     public LoginModel(String mobile, String password) {
         this.mobile = mobile;

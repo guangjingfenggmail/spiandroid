@@ -65,6 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="Nomor Handphone"
+                android:onTextChanged="@{(s,start,before,count)->presenter.onTextChanged(model,s,start,before,count)}"
                 android:text="@={model.mobile}" />
 
         </LinearLayout>
@@ -82,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="Kata Sandi"
+                android:onTextChanged="@{(s,start,before,count)->presenter.onTextChanged(model,s,start,before,count)}"
                 android:text="@={model.password}" />
 
         </LinearLayout>
@@ -92,6 +94,7 @@
             android:layout_height="48dp"
             android:layout_below="@+id/layoutPwd"
             android:layout_margin="16dp"
+            android:enabled="false"
             android:onClick="@{(view)->presenter.onClick(view,model)}"
             android:text="Masuk" />
     </RelativeLayout>

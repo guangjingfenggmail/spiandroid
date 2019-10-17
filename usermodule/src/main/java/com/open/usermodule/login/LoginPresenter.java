@@ -31,7 +31,7 @@ import io.reactivex.schedulers.Schedulers;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class LoginPresenter extends Presenter<LoginModel,LoginViewModel> {
+public class LoginPresenter extends Presenter<LoginModel, LoginViewModel> {
 
     public LoginPresenter(FragmentActivity context, LoginModel model, LoginViewModel viewModel) {
         super(context, model, viewModel);
@@ -70,7 +70,7 @@ public class LoginPresenter extends Presenter<LoginModel,LoginViewModel> {
                                 Log.e("LoginPresenter", "===onComplete===");
 //                                RxBus.getInstance().post(new LoginEvent(0));
                                 LiveDataBus.get().of(LiveLoginEvent.class).login().postValue(0);
-                                ((Activity)context).finish();
+                                ((Activity) context).finish();
                             }
                         });
             }
@@ -78,8 +78,15 @@ public class LoginPresenter extends Presenter<LoginModel,LoginViewModel> {
         } else if (v.getId() == R.id.imgClose) {
 //            RxBus.getInstance().post(new LoginEvent(-1));
             LiveDataBus.get().of(LiveLoginEvent.class).login().postValue(-1);
-            ((Activity)context).finish();
+            ((Activity) context).finish();
         }
+    }
+
+
+    public void onTextChanged(LoginModel mMode, CharSequence s, int start, int before, int count) {
+        Log.e("LoginPresenter", "===onTextChanged=== s" + s);
+        viewModel.mloginLiveData.postValue(mMode);
+
     }
 
     private boolean validate(LoginModel mMode) {
