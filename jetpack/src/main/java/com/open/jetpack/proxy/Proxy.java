@@ -5,8 +5,10 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.open.jetpack.Presenter;
 
@@ -37,8 +39,8 @@ public class Proxy<P extends Presenter> implements IProxy {
     }
 
     @Override
-    public <VM extends ViewModel> VM initProvider(@NonNull Class<VM> modelClass) {
-        return new ViewModelProvider(mActivity, ViewModelProvider.AndroidViewModelFactory.getInstance(mActivity.getApplication())).get(modelClass);
+    public <VM extends AndroidViewModel> VM initProvider(@NonNull Class<VM> modelClass) {
+        return ViewModelProviders.of(mActivity, ViewModelProvider.AndroidViewModelFactory.getInstance(mActivity.getApplication())).get(modelClass);
     }
 
     @Override

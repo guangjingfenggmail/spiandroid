@@ -2,7 +2,7 @@ package com.open.jetpack.proxy;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.AndroidViewModel;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -18,7 +18,7 @@ public interface IProxy {
 
     ViewDataBinding onCreate();
 
-    <V extends ViewModel> V initProvider(@NonNull Class<V> modelClass);
+    <V extends AndroidViewModel> V initProvider(@NonNull Class<V> modelClass);
 
     void onDestroy();
 

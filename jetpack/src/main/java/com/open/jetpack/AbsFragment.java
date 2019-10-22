@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 
 import com.open.jetpack.proxy.Proxy;
@@ -25,7 +26,7 @@ import com.open.jetpack.proxy.ProxyFragment;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public abstract class AbsFragment<T extends ViewDataBinding, PT extends Object, VM extends ViewModel, P extends Presenter<PT, VM>> extends Fragment {
+public abstract class AbsFragment<T extends ViewDataBinding, PT extends Object, VM extends AndroidViewModel, P extends Presenter<PT, VM>> extends Fragment {
     protected T mBinding;
     protected PT mModel;
     protected VM mViewModel;

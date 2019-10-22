@@ -1,7 +1,6 @@
-package com.open.usermodule.login;
+package com.open.usermodule.login
 
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import java.io.Serializable
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -12,15 +11,7 @@ import androidx.lifecycle.ViewModel;
  * @modifyTime:
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
- **/
-public class LoginViewModel extends ViewModel {
-    public MutableLiveData<LoginModel> mloginLiveData = new MutableLiveData<>();
-    public LoginRepertory mLoginRepertory = new LoginRepertory();
-
-    public LoginViewModel() {
-
-    }
-
-
-
+ */
+public open class LoginModel(var mobile: String, var password: String) : Serializable {
+    var isEnable = false
 }

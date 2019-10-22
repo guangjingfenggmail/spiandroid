@@ -3,7 +3,7 @@ package com.open.jetpack;
 import android.content.Context;
 
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.AndroidViewModel;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModel;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class Presenter<T, V extends ViewModel> {
+public class Presenter<T, V extends AndroidViewModel> {
     protected FragmentActivity context;
     protected T model;
     protected V viewModel;

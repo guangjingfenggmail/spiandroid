@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 
 import com.open.jetpack.proxy.Proxy;
@@ -22,7 +23,7 @@ import com.open.jetpack.proxy.ProxyActivity;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public abstract class AbsAppCompatActivity<T extends ViewDataBinding, PT extends Object, VM extends ViewModel, P extends Presenter<PT, VM>> extends AppCompatActivity {
+public abstract class AbsAppCompatActivity<T extends ViewDataBinding, PT extends Object, VM extends AndroidViewModel, P extends Presenter<PT, VM>> extends AppCompatActivity {
     protected T mBinding;
     protected PT mModel;
     protected VM mViewModel;

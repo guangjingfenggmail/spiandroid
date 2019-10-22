@@ -1,5 +1,9 @@
 package com.open.verifymodule.mpf;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -13,9 +17,10 @@ import androidx.lifecycle.ViewModel;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class MpfViewModel extends ViewModel {
+public class MpfViewModel extends AndroidViewModel {
     public MutableLiveData<MpfModel> mMpfLiveData = new MutableLiveData<>();
 
-    public MpfViewModel() {
+    public MpfViewModel(@NonNull Application application) {
+        super(application);
     }
 }

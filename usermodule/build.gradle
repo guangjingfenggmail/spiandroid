@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -40,5 +43,23 @@ dependencies {
     compile project(path: ':aspectjx')
     compile project(path: ':retrofit')
     compile project(path: ':jetpack')
+
+    // Room components
+    def roomVersion = '2.2.0'
+    api "androidx.room:room-runtime:$roomVersion"
+    api "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$roomVersion"
+    api "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+
+    // Coroutines
+    def coroutines = '1.2.1'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+
+    def archLifecycleVersion = "2.2.0-alpha02"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+
 
 }
